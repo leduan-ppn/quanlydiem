@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Quản lý điểm sinh viên</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>🎓 Student</h2>
+
+        <ul>
+            <li onclick="showPage('dashboard')">🏠 Dashboard</li>
+            <li onclick="showPage('score')">📚 Quản lý điểm</li>
+            <li onclick="showPage('semester')">📅 Điểm theo học kỳ</li>
+            <li onclick="showPage('summary')">📊 Tổng kết học tập</li>
+            <li onclick="showPage('chart')">📈 Biểu đồ thống kê</li>
+            <li onclick="showPage('profile')">👤 Hồ sơ</li>
+            <li onclick="showPage('setting')">⚙️ Cài đặt</li>
+            <li class="logout">🚪 Đăng xuất</li>
+        </ul>
+    </div>
+
+    <!-- Nội dung -->
+    <div class="content">
+
+        <div id="dashboard" class="page active">
+            <h1>Dashboard</h1>
+        </div>
+        <!--PHẦN 1-->
+
+        <div id="score" class="page">
+            <h1>Quản lý điểm</h1>
+            <!-- Chọn học kỳ -->
+            <select id="semesterSelect">
+                <option>HK1 - Năm 1</option>
+                <option>HK2 - Năm 1</option>
+                <option>HK1 - Năm 2</option>
+                <option>HK2 - Năm 2</option>
+                <option>HK1 - Năm 3</option>
+                <option>HK2 - Năm 3</option>
+                <option>HK1 - Năm 4</option>
+                <option>HK2 - Năm 4</option>
+            </select>
+
+            <h3>Nhập môn học</h3>
+
+            <form id="form">
+                <input id="subject" placeholder="Tên môn học" required>
+                <input id="credit" type="number" placeholder="Số tín chỉ" required>
+                <input id="process" type="number" placeholder="Điểm quá trình" required>
+                <input id="final" type="number" placeholder="Điểm cuối kỳ" required>
+
+                <button type="submit">Lưu</button>
+                <button type="button" onclick="resetForm()">Sửa</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Môn</th>
+                        <th>Tín chỉ</th>
+                        <th>QT</th>
+                        <th>CK</th>
+                        <th>Tổng kết</th>
+                        <th>Thang 4</th>
+                        <th>Điểm chữ</th>
+                        <th>Tình trạng</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+
+            <div class="summary">
+                <h3>Tổng kết</h3>
+                <p>Điểm TB thang 10: <span id="avg10">0</span></p>
+                <p>Điểm TB thang 4: <span id="avg4">0</span></p>
+                <p>Tổng điểm tích lũy thang 10: <span id="sum10">0</span></p>
+                <p>Tổng điểm tích lũy thang 4: <span id="sum4">0</span></p>
+            </div>
+            <button onclick="saveScores()">Lưu điểm</button>
+            <button onclick="clearScores()">Xóa điểm</button>
+
+        </div>
+
+        <div id="semester" class="page">
+            <h1>Điểm theo học kỳ</h1>
+           
+        </div>
+
+        <div id="summary" class="page">
+            <h1>Tổng kết học tập</h1>
+            <p>Xếp loại học lực...</p>
+        </div>
+
+        <div id="chart" class="page">
+            <h1>Biểu đồ thống kê</h1>
+            <p>Biểu đồ đậu/rớt...</p>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
